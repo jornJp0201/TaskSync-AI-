@@ -1,0 +1,11 @@
+[functions.google-calendar-sync]
+verify_jwt = true
+entrypoint = "./functions/google-calendar-sync/index.ts"
+
+[functions.github-sync]
+verify_jwt = true
+entrypoint = "./functions/github-sync/index.ts"
+
+[functions.ai-scheduler]
+verify_jwt = true
+entrypoint = "./functions/ai-scheduler/index.ts"
