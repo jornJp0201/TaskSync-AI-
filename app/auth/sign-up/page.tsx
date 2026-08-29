@@ -5,11 +5,12 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Loader2, Mail, Lock, User, Eye, EyeOff, ShieldCheck, Check } from 'lucide-react';
+import { Loader2, Mail, Lock, User, Eye, EyeOff, ShieldCheck, Check, ChevronDown, FileText } from 'lucide-react';
 import { AuthShell } from '@/components/auth/auth-shell';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Checkbox } from '@/components/ui/checkbox';
 import { signUpSchema, getAuthErrorMessage, type SignUpValues } from '@/lib/auth-validation';
 
 export default function SignUpPage() {
@@ -18,15 +19,17 @@ export default function SignUpPage() {
   const [showConfirm, setShowConfirm] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [privacyOpen, setPrivacyOpen] = useState(false);
 
   const {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors },
   } = useForm<SignUpValues>({
     resolver: zodResolver(signUpSchema),
-    defaultValues: { fullName: '', email: '', password: '', confirmPassword: '' },
+    defaultValues: { fullName: '', email: '', password: '', confirmPassword: '', privacy: false },
   });
 
   const password = watch('password') || '';
@@ -188,6 +191,68 @@ export default function SignUpPage() {
             <p className="text-xs text-red-600 dark:text-red-400">
               {errors.confirmPassword.message}
             </p>
+          )}
+        </div>
+
+        {/* Privacy policy accordion */}
+        <div className="rounded-lg border border-border/60">
+          <button
+            type="button"
+            onClick={() => setPrivacyOpen(!privacyOpen)}
+            className="flex w-full items-center gap-2 px-4 py-3 text-left text-sm font-medium hover:bg-muted/50"
+          >
+            <FileText className="h-4 w-4 shrink-0 text-muted-foreground" />
+            プライバシーポリシー
+            <ChevronDown
+              className={`ml-auto h-4 w-4 text-muted-foreground transition-transform ${privacyOpen ? 'rotate-180' : ''}`}
+            />
+          </button>
+          {privacyOpen && (
+            <div className="border-t border-border/60 px-4 py-3 text-xs leading-relaxed text-muted-foreground">
+              <h4 className="mb-2 font-semibold text-foreground">個人情報の取り扱いについて</h4>
+              <p className="mb-2">
+                本サービスは、インターンシップの一環として開発されたポートフォリオ作品です。登録いただいた個人情報は以下の目的でのみ利用します。
+              </p>
+              <ul className="mb-2 list-inside list-disc space-y-1">
+                <li>アカウント識別のための名前・メールアドレスの保管</li>
+                <li>サービス内でのタスク・スケジュールデータの管理</li>
+                <li>認証・ログインセッションの維持</li>
+              </ul>
+              <p className="mb-2">
+                取得した情報は第三者に提供することはなく、サービスの提供および機能の検証目的のみに使用します。データは暗号化されて保存され、通信もSSL/TLSで保護されています。
+              </p>
+              <p className="mb-2">
+                ご本人から削除の申し出があった場合、速やかにアカウントおよび関連データを削除します。お問い合わせは登録メールアドレスより行ってください。
+              </p>
+              <p className="text-muted-foreground/80">
+                本サービスは課金を行いません。料金プランの表示は作品の構成上のデモであり、実際に決済が発生することはありません。
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* Privacy consent checkbox */}
+        <div className="space-y-2">
+          <div className="flex items-start gap-2.5">
+            <Checkbox
+              id="privacy"
+              onCheckedChange={(checked) => setValue('privacy', checked === true, { shouldValidate: true })}
+              className="mt-0.5"
+            />
+            <Label htmlFor="privacy" className="text-sm leading-relaxed font-normal cursor-pointer">
+              <span>上記の</span>{' '}
+              <button
+                type="button"
+                onClick={() => setPrivacyOpen(true)}
+                className="font-semibold text-sky-600 hover:text-sky-700 dark:text-sky-400"
+              >
+                プライバシーポリシー
+              </button>
+              <span>の内容を確認し、個人情報の取り扱いに同意します</span>
+            </Label>
+          </div>
+          {errors.privacy && (
+            <p className="text-xs text-red-600 dark:text-red-400">{errors.privacy.message}</p>
           )}
         </div>
 

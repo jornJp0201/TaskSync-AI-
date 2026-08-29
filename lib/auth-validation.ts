@@ -28,6 +28,7 @@ export const signUpSchema = z
       .regex(/[A-Za-z]/, '英字を1文字以上含めてください')
       .regex(/[0-9]/, '数字を1文字以上含めてください'),
     confirmPassword: z.string().min(1, 'パスワード（確認）を入力してください'),
+    privacy: z.boolean().refine((v) => v === true, 'プライバシーポリシーへの同意が必要です'),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: 'パスワードが一致しません',

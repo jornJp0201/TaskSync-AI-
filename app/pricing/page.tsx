@@ -1,7 +1,6 @@
 'use client';
 
-import Link from 'next/link';
-import { Check, Sparkles, Zap, Crown, Building2, ArrowRight } from 'lucide-react';
+import { Check, Sparkles, Zap, Crown, Building2, Info } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Navbar } from '@/components/landing/navbar';
@@ -43,8 +42,8 @@ const plans = [
       '週次生産性レポート',
       'スマート通知',
     ],
-    cta: 'Proを始める',
-    note: '14日間無料体験',
+    cta: '機能を試す',
+    note: '実際の課金は発生しません',
   },
   {
     name: 'Ultra',
@@ -62,8 +61,8 @@ const plans = [
       '優先サポート',
       'API アクセス',
     ],
-    cta: 'Ultraを始める',
-    note: '14日間無料体験',
+    cta: '機能を試す',
+    note: '実際の課金は発生しません',
   },
 ];
 
@@ -116,6 +115,10 @@ export default function PricingPage() {
                 <br className="hidden sm:block" />
                 いつでも変更・解約可能です。
               </p>
+              <div className="mx-auto mt-6 flex max-w-xl items-center gap-2 rounded-xl border border-amber-200 bg-amber-50/80 px-5 py-3 text-sm text-amber-800 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-300">
+                <Info className="h-4 w-4 shrink-0" />
+                <span>本サービスはインターンシップで制作したポートフォリオ作品です。料金表示はデモ目的であり、実際の課金は一切発生しません。すべての機能を無料でご利用いただけます。</span>
+              </div>
             </div>
 
             <div className="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-3">
@@ -174,12 +177,9 @@ export default function PricingPage() {
                   <Button
                     variant={plan.accent ? 'default' : 'outline'}
                     className="w-full"
-                    asChild
+                    onClick={() => {}}
                   >
-                    <Link href="/auth/sign-up">
-                      {plan.cta}
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
+                    {plan.cta}
                   </Button>
                 </div>
               ))}
@@ -208,11 +208,8 @@ export default function PricingPage() {
                   <p className="mt-1 text-xs text-muted-foreground">
                     最小5IDから / 年額契約で20%OFF
                   </p>
-                  <Button className="mt-6" size="lg" asChild>
-                    <Link href="#">
-                      お問い合わせ
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
+                  <Button className="mt-6" size="lg" onClick={() => {}}>
+                    お問い合わせ
                   </Button>
                 </div>
                 <div className="border-t border-border/40 p-8 lg:border-l lg:border-t-0 lg:p-10">

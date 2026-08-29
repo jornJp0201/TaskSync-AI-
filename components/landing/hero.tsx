@@ -66,6 +66,14 @@ export function Hero() {
               Web・スマホ対応
             </span>
           </div>
+
+          <div className="mx-auto mt-6 max-w-2xl animate-fade-up rounded-xl border border-amber-200 bg-amber-50/80 px-5 py-3 text-center text-sm text-amber-800 delay-300 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-300">
+            <p>
+              <span className="font-semibold">本サービスはインターンシップで制作したポートフォリオ作品です。</span>
+              <br className="hidden sm:block" />
+              料金プランの表示はデモ目的であり、実際の課金は一切発生しません。すべての機能を無料でご利用いただけます。
+            </p>
+          </div>
         </div>
 
         <div className="relative mx-auto mt-16 max-w-5xl animate-scale-in delay-500">

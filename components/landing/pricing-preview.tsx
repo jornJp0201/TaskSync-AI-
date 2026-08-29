@@ -1,5 +1,4 @@
-import Link from 'next/link';
-import { Check, Sparkles, Users, Building2 } from 'lucide-react';
+import { Check, Sparkles, Users, Building2, Info } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
@@ -36,7 +35,7 @@ const plans = [
       'タスク管理（無制限）',
       '週次レポート',
     ],
-    cta: 'Proを始める',
+    cta: '機能を試す',
   },
   {
     name: 'Ultra',
@@ -52,7 +51,7 @@ const plans = [
       '高度な生産性分析レポート',
       '優先サポート',
     ],
-    cta: 'Ultraを始める',
+    cta: '機能を試す',
   },
 ];
 
@@ -87,6 +86,10 @@ export function PricingPreview() {
           <p className="mt-4 text-lg text-muted-foreground">
             まずは無料で始めて、必要に応じてアップグレード
           </p>
+          <div className="mx-auto mt-6 flex max-w-xl items-center gap-2 rounded-xl border border-amber-200 bg-amber-50/80 px-5 py-3 text-sm text-amber-800 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-300">
+            <Info className="h-4 w-4 shrink-0" />
+            <span>本サービスはインターンシップで制作したポートフォリオ作品です。料金表示はデモ目的であり、実際の課金は一切発生しません。</span>
+          </div>
         </div>
 
         <div className="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-3">
@@ -127,9 +130,8 @@ export function PricingPreview() {
               <Button
                 variant={plan.accent ? 'default' : 'outline'}
                 className="w-full"
-                asChild
               >
-                <Link href="/auth/sign-up">{plan.cta}</Link>
+                {plan.cta}
               </Button>
             </div>
           ))}
@@ -163,8 +165,8 @@ export function PricingPreview() {
               </ul>
             </div>
             <div className="flex items-end lg:col-span-1">
-              <Button variant="outline" className="w-full" asChild>
-                <Link href="/pricing">{teamPlan.cta}</Link>
+              <Button variant="outline" className="w-full">
+                {teamPlan.cta}
               </Button>
             </div>
           </div>
