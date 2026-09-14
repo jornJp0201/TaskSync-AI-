@@ -6,10 +6,6 @@
 
 ---
 
-＊このアプリケーションはインターンで作成したものです。料金などの欄がありますが実際には料金は取られませんのでご安心ください。
-
----
-
 ## 目次
 
 - [概要](#概要)
@@ -42,6 +38,9 @@ TaskSync AIは、個人の学習・作業ペースをAIが分析し、現実的�
 ## デモ
 
 | ランディングページ | ダッシュボード |
+|:---:|:---:|
+| LP・料金プラン・機能紹介 | デュアル画面・AIスケジュール生成 |
+| ![Landing](https://bolt.new/static/open-in-bolt.svg) | ![Dashboard](https://bolt.new/static/open-in-bolt.svg) |
 
 ---
 
@@ -356,4 +355,5 @@ SUPABASE_DB_URL=...
 ---
 
 ## リンク
-https://tasksync-ai-u0gj.bolt.host/app/analytics
+
+- [Bolt で開く](https://bolt.new/~/sb1-yzelnf3b)
