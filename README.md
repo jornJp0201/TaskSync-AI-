@@ -33,16 +33,7 @@ TaskSync AIは、個人の学習・作業ペースをAIが分析し、現実的�
 - 資格試験受験者・学生（学習ログに基づくAIスケジューリング）
 - 企業・教育機関（Team ライセンスで受講生・社員の進捗を可視化・管理）
 
----
 
-## デモ
-
-| ランディングページ | ダッシュボード |
-|:---:|:---:|
-| LP・料金プラン・機能紹介 | デュアル画面・AIスケジュール生成 |
-| ![Landing](https://bolt.new/static/open-in-bolt.svg) | ![Dashboard](https://bolt.new/static/open-in-bolt.svg) |
-
----
 
 ## コア機能
 
